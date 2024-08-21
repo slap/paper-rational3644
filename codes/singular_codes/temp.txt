@@ -1,0 +1,23 @@
+LIB"primdec.lib";
+ring R = (0,a3x,a3y,a3z,b1x,b1y,b1z,b2x,b2y,b2z,b3x,b3y,b3z,c1x,c1y,c1z,c2x,c2y,c2z,c3x,c3y,c3z), (x,y,z,t), dp;
+
+poly a3=a3x*x+a3y*y+a3z*z;
+poly b1=b1x*x+b1y*y+b1z*z;
+poly b2=b2x*x+b2y*y+b2z*z;
+poly b3=b3x*x+b3y*y+b3z*z;
+poly c1=c1x*x+c1y*y+c1z*z;
+poly c2=c2x*x+c2y*y+c2z*z;
+poly c3=c3x*x+c3y*y+c3z*z;
+
+poly p1= -2*a3*b2*c3+2*a3*b3*c2-b2^3-b2*b3^2-b2*b1^2+2*b2*b1*c1*t+2*b2*c1^2*t^2+2*c3^2*c2+2*c2^3-2*c2*b1^2*t-2*c2*b1*c1*t^2+2*c2*c1^2;
+poly p2=2*a3*b1*c3-2*a3*b3*c1+b1^3+b1*b3^2+b1*b2^2-2*b1*b2*c2*t-2*b1*c2^2*t^2-2*c3^2*c1-2*c1^3+2*c1*b2^2*t+2*c1*b2*c2*t^2-2*c1*c2^2;
+poly p3 = b2*c1-c2*b1;
+ideal I = p1,p2,p3,t^3-2;
+groebner(I);
+
+quit;
+
+// radical(I);
+list l = minAssGTZ(I);
+l;
+quit;

@@ -1,0 +1,21 @@
+ring R = 0, (b_0_8, b_0_9, s,t), dp;
+poly f1 =64*b_0_8*t^2-32*b_0_8+64*b_0_9*t-64*b_0_9+1280;
+poly f2 =12*b_0_8*s^3*t-16*b_0_8*s*t^2+24*b_0_8*s*t-12*b_0_9*s^3*t^2-8*b_0_9*s*t^2+32*b_0_9*s+192*s^3*t^2-96*s^3*t+256*s*t^2-192*s*t;
+poly f3 =-16*b_0_8*s+12*b_0_9*s^3*t-16*b_0_9*s*t^2+24*b_0_9*s*t+192*s^3*t^2-192*s^3*t+384*s*t^2-384*s*t-384*s;
+poly f4 =-12*b_0_8*s^3*t^2-8*b_0_8*s*t^2+32*b_0_8*s-32*b_0_9*s+96*s^3*t^2-384*s^3*t+576*s*t^2-768*s*t+256*s, 8*b_0_8+128*t^2-64, 16*b_0_9+256*t-256;
+poly f5 =16*b_0_8+256*t^2-128, 16*b_0_9+256*t-256;
+poly f6 =-4+3*s^4+(-4*t+4)*s^2;
+poly f7 = t^3-2;
+ideal I = f1, f2, f3, f4, f5, f6, f7;
+I = groebner(I);
+
+LIB"primdec.lib";
+list l = minAssGTZ(I);
+
+ideal J = l[1];
+option("redSB");
+J = groebner(J);
+
+ring S = 0, (b_0_8, b_7_9, b_8_8, t1, t2, x3, t), lp;
+ideal J = imap(R, J);
+groebner(J);

@@ -1,0 +1,38 @@
+currentdir("C:/Users/User/Dropbox/repos/rationalSOS");
+
+# Change to the path of the file rationalSOS.mpl
+read("rationalSOS.mpl");
+with(rationalSOS);
+
+# Display tables of any size
+interface(rtablesize=infinity);
+
+f := x^4+x*y^3+y^4-3*x^2*y*z-4*x*y^2*z+2*x^2*z^2+x*z^3+y*z^3+z^4;
+
+f2:=eval(f, {x=X^2, y=Y^2, z=Z^2});
+
+# If we use trace equations, we get that there is no solution.
+# f does not admit a rational SOS decomposition.
+out1 := exactSOS(f2, forceRational = "yes");
+
+sSym := solve({f=0, diff(f, x)=0, diff(f,y)=0, diff(f,z)=0});
+f3:=eval(f, {x=-X^2, y=Y^2, z=Z^2});
+sSym := solve({f3=0, diff(f3, X)=0, diff(f3,Y)=0, diff(f3,Z)=0});
+out1 := exactSOS(f3):
+
+# Scheiderer o Scheiderer
+#mot := x^4*y^2+x^2*y^4-3*x^2*y^2*z^2+2*z^6;
+mot := f;
+m1 := eval(mot, {x=X1, y=Y1, z=Z1});
+m2 := eval(mot, {x=X2, y=Y2, z=Z2});
+m3 := eval(mot, {x=X3, y=Y3, z=Z3});
+fMot:=eval(f, {x=m1, y=m2, z=m3});
+out1 := exactSOS(fMot):
+
+# Scheiderer o Motzkin
+mot := x^4*y^2+x^2*y^4-3*x^2*y^2*z^2+2*z^6;
+m1 := eval(mot, {x=X1, y=Y1, z=Z1});
+m2 := eval(mot, {x=X2, y=Y2, z=Z2});
+m3 := eval(mot, {x=X3, y=Y3, z=Z3});
+fMot:=eval(f, {x=m1, y=m2, z=m3});
+out1 := exactSOS(fMot, facial = "no"):

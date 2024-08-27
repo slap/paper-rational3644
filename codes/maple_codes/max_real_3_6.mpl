@@ -1,8 +1,7 @@
-#readmylib("random_helps.mpl"):
 randi := proc(n)
   # random integer
   rand(-n..n)();
-end proc;
+end proc:
 
 dg := 3:
 alias(t=RootOf(Z^dg-2)):
@@ -24,8 +23,8 @@ a[2..dg,2..dg] := Matrix([[x,z+y],[z-y,x]]):
 adj := linalg:-adj(%):
 adj := linalg:-transpose(%):  
 #force the quadratic denominator to be the polynomial defining a circle
-q := linalg:-det(%):
 adj := convert(adj,list):
+q := linalg:-det(a[2..dg,2..dg]):
 
 k:= 0:
 #parametrize the linear forms of the first row by unknowns b1 to b9
@@ -66,5 +65,5 @@ p := seq(factor(p[i]*q), i=1..dg):
 gb := Groebner:-Basis([p,z-1],plex(x,y,z)):
 #map(f->[degree(f,x),degree(f,y),degree(f,z)], gb);
 fsolve(gb[2]); 
+printf("%a\n",[p]);
 
-#prnt([p]);

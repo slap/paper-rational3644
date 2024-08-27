@@ -1,0 +1,36 @@
+\section{Quintic Ternary Forms}
+
+In this section, we will use the same notations used in Section \ref{general_sec}.
+We ask whether we can follow the construction in Section \ref{general_sec} with $d=5$ to obtain a sum of 5 squares 
+$\sum_{i=1}^5 p_i^2$ such that we have the finite maximum amount of real zeros for $Z(p_1,\dots, p_5)$ i.e. 
+if $\# Z_{\R}(p_1,\dots, p_5) = 14$ is possible.
+
+We will provide a strategy of obtaining such an example. 
+
+\begin{enumerate}
+\item First we choose initial forms in the $4\times 4$ matrix $B$ to be such that $\det B$ represents a curve with 
+sufficiently many real inflections. Intuitively, this should provide us with a curve that is optimaly designed to 
+intersect other curves at maximum number of real points. A good idea would be to choose $B$ to be the degree $4$ Taylor 
+series approximation of a sinusoidal curve (because we have degree $4$, we could expand cosine at $0$ and obtain a 
+degree $4$ polynomial estimate of the graph of the cosine function). Recall that that $q=\det B$.
+\item Next we endow the linear forms $a_{i,1}$ for $i=1,\dots, 4$ with coefficients of $x,y,z$ that are paremetrized 
+by parameters that we will want to solve. There are $15$ choices of parameters, we denote them as 
+$$\bm b := b_1,\dots, b_{15}$$
+\item We then obtain $p_2(\bm b;x,y,z),\dots, p_5(\bm b;x,y,z)$ paremetrized by $\bm b$
+\item Furthermore, we can compute the first row of $\adj(B^\top)$ which we denote
+$$\bm v := (\tilde b_{2,1},\dots, \tilde b_{5,1})$$
+This is a vector of cubic forms in $x,y,z$
+\item We also know the vector $\bm c$ in the right-hand side of equation \eqref{Bac_eqn} that has terms which are
+quadratic in the $\bm b$.
+\item We choose generic $14$ real points $P_1,\dots, P_{14} \in \P^2(\bar \Q\cap\R) \cap Z(q)$.
+\item We would like to choose the parameters $b_1,\dots, b_{15}$ such that $p_2$ vanishes at $P_1,\dots, P_{14}$. 
+This is the same as requiring that the inner product below vanishes
+$$\spn{\bm v, \bm c}(\bm b;P_i) = 0$$
+Thus we get $14$ quadratic equations in $\bm b$. 
+\item Our objective is to find rational solutions (i.e.\ over $\Q$) to the $\bm b$. But this is not guaranteed. What 
+is highly likely is to find a real algebraic solution $\bm b$. 
+\item We then approximate $\bm b$ to rational parameters and use this. All the solutions to $Z(p,q)$ whould remain real
+because $P_1,\dots, P_{14}$ was initially chosen generically (thus they should not be points were $\bm v$ vanishes) 
+and real and so the new rational approximate to $\bm b$ will give us a slight perturbation of $P_1,\dots,P_{14}$ as 
+points of $Z(p,q)$ which remain real.
+\end{enumerate}

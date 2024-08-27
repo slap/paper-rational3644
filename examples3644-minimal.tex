@@ -87,6 +87,7 @@ linkcolor=blue
 \newtheorem{cor}[theorem]{Corollary}
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{exam}[theorem]{Example}
+\newtheorem{const}[theorem]{Construction}
 %%% free theorem styles
 \newcommand{\thistheoremname}{}
 \newtheorem{genericthm}[theorem]{\thistheoremname}
@@ -486,15 +487,8 @@ Since $\gamma$ appears only in the second coordinate, we conclude that $c_1=0$. 
 All these zero coordinates lead us to conclude that $c_2=2c_8$ (for $\beta$), $-c_4+2c_7+sc_8=0$ (for $\alpha^2\beta$) and $c_0-sc_4/2+sc_7=0$ (for $1$). We can continue this argument with 
 $\bm{c}\cdot v(P_2)$ knowing many coordinates that are already $0$ and get
 $c_2=0$ (for $\alpha$) and show that the remaining coordinates are also $0$. Thus we conclude that $Q$ cannot be $\Q$-rational.
-\comment{
-We iteratively show that all the coefficients $c_i$ must be $0$ leading to a contradiction. From $\bm{c} . v(P_1) = 0$ we know that $c_7=0$. We look now at $\bm{c} . v(P_3) = 0$.
-Since $\alpha^2\gamma$ appears only in the third coordinate, we conclude that $c_2=0$. A similar argument for $\alpha^2,\alpha\gamma$ and $\beta$ yields $c_9=0,c_3=0$ and $c_5=0$ respectively.
-All these zero coordinates lead us to conclude that $c_0=2c_4$ (for $\beta\alpha^2$) and $2(c_8-c_4)+c_6=0$ (for $\alpha\beta$). We can continue this argument with $\bm{c} . v(P_2)$ knowing many 
-coordinates that are already $0$ and get
-$c_6=0$ and $c_4=2c_8$ and finally conclude that $Q$ cannot be $\Q$-rational.
-}
 
-\section{General Construction and Geometric Proof}
+\section{General Construction and Geometric Proof}\label{general_sec}
 
 To study the higher degree number fields we generalize Construction \ref{ls_3sos}. Let $d\ge 3$ and consider $\alpha$ to be 
 a $d$-th real root of a prime number. We want to find $q_i\in\Q(x,y,z)[\alpha]$ of degree $d-1$ over $\alpha$,  i.e.
@@ -587,7 +581,9 @@ The above observation gives us an intuition for proving Theorem \ref{common_pts}
 Let us look more explicitly on how $b_{i,1}$ ($i>1$) is computed. In the beginning we have a system of linear equations in the 
 $a_{i,1}$ for $i\ge 2$ i.e.
 
-$$B^\top\pmat{a_{2,1}\\ \vdots \\a_{d,1}} = \pmat{c_2 \\ \vdots \\ c_d}$$
+\begin{equation}\label{Bac_eqn}
+B^\top\pmat{a_{2,1}\\ \vdots \\a_{d,1}} = \pmat{c_2 \\ \vdots \\ c_d}
+\end{equation}
 where $c_j$ ($j\ge 2$) are polynomials in the initial forms i.e.\ $a_{i,j}$ with either $j\ne 1$ or $(i,j)=(1,1)$. 
 We obtain $b_{i,1}$
 via
@@ -647,7 +643,6 @@ intersection with a general plane is finite. This number is exactly the degree o
 or \cite{arbarello} \S II.5).
 \end{proof}
 
-%jcapco now
 \begin{proof}[Proof of Theorem \ref{common_pts}]
 Similar to the proof for $d=3$ in \ref{common_pts_d=3}, we will rule out the points in $Z(q,p_2)$ for which the first row of $\adj(B^\top)$ vanishes at these points. 
 By Lemma \ref{generic_mat}\ref{vanishing_row} there are $\binom {d-1}2$ such points. The rest of the proof uses exactly the same argument as the proof for $d=3$ following Lemma 
@@ -655,16 +650,7 @@ By Lemma \ref{generic_mat}\ref{vanishing_row} there are $\binom {d-1}2$ such poi
 $$ m(d) =\# Z(q,p_2) - \binom {d-1}2 = d(d-1) - \binom {d-1}2 = \binom{d+1}2  - 1$$
 \end{proof}
 
-\comment{
-For d=3:
-
-p1=0, is a line and a conic section q=0 (generally, the non-linear components of p1=0 is a (d-1)x(d-1) determinant) a[2,2]*a[3,3]-a[2,3]*a[3,2]=0
-p2=0 and p3=0 are generally elliptic curves on the plane.
-I wanted to know geometrically why generally the zero (over the field of algebraic numbers) Z(p1,p2,p3) consists of exactly 5 points. Experimentally I saw that the common points lie on the conic section p1=0. Generally Z(q,pj) j=2 or 3 are 6 points, but the extra point that is missing when we look at Z(q,p2,p3)=Z(p1,p2,p3) must have a meaning. Indeed: The intersection of the lines a[3,2]=0 and a[3,3]=0 is the "extra point" of Z(q,p2) and the intersection of the lines a[2,3]=0 and a[2,2]=0 is the "extra point" of Z(q,p3). Note that p3 is obtained by p1 by swapping a[3,2] with -a[2,2] and swapping a[3,3] with -a[2,3]. These are nice observations for which I think I can prove.
-
-Recall that in many examples we had in 2019, Santiago (mostly) and I purposefully made the conic q=0 to be degenerate i.e. the union of two lines. In this way it is easier to construct (by choices of a[i,j]) Z(q,p2) or Z(q,p3) to be composed of 6 real points.
-
-}
+\input{quintic_ternary_forms}
 
 \bibliographystyle{amsplain}
 \bibliography{rationalSOS}

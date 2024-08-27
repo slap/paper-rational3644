@@ -6,3 +6,5 @@
 *.out
 *.synctex
 main.pdf
+pdf/
+/compile.bat

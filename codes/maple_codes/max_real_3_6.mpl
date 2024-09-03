@@ -58,7 +58,7 @@ b7 := randi(3): b8:= randi(3): b9:=randi(3):
 #increase the accuracy to convert to rational, if necessary 
 fsol := fsolve(eqns):
 sol := convert(fsol,rational, 4):
-pNew := seq(factor(subs(sol2,p[i])*q), i=1..dg):
+pNew := seq(factor(subs(sol,p[i])*q), i=1..dg):
 
 # This is faster than using Groebner bases (Maple 15)
 evalf(allvalues(solve({pNew})));
@@ -69,14 +69,14 @@ evalf(allvalues(solve({pNew})));
 #printf("%a\n",[p]);
 
 # The resulting polynomial
-pp := pNew[1]^2+pNew[2]^2+pNew[3]^2;
+pp := pNew[1]^2+pNew[2]^2+pNew[3]^2:
 pp := simplify(pp);
 
 
 # Verification with rationalSOS and SEDUMI
 
 # Uncomment and set the path to rationalSOS.mpl file
-#currentdir("C:/Users/Usuario/rationalSOS");
+#currentdir("C:/Users/Usuario/Documents/GitHub/sums-of-squares/rationalSOS");
 
 #######################################################################
 # Load "Rational SOS" procedures
@@ -86,9 +86,13 @@ with(rationalSOS);
 
 # Display tables of any size
 interface(rtablesize=infinity);
+#######################################################################
 
+# We look for a rational decomposition.
+# We do facial reduction using the algebraic solutions of the polynomials
 out := exactSOS(pp, realPolynomials = [pNew], facial = "yes", traceEquations = "no", objFunction = "eig", forceRational = "yes"):
 eig(out[3]);
 
 # The input for SEDUMI has rank 5 and 2 indeterminates.
 # Sedumi finds a positive definite solution, indicating that a rational decomposition exists.
+

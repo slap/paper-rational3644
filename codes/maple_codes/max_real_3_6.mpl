@@ -1,3 +1,5 @@
+restart;
+
 randi := proc(n)
   # random integer
   rand(-n..n)();
@@ -93,6 +95,16 @@ interface(rtablesize=infinity);
 out := exactSOS(pp, realPolynomials = [pNew], facial = "yes", traceEquations = "no", objFunction = "eig", forceRational = "yes"):
 eig(out[3]);
 
+# randomSeed = 1234
 # The input for SEDUMI has rank 5 and 2 indeterminates.
 # Sedumi finds a positive definite solution, indicating that a rational decomposition exists.
+
+# randomSeed = 1
+# The input for SEDUMI has rank 5 and 2 indeterminates.
+# The given decomposition as a sum of 3 squares is the unique decomposition
+
+
+# We verify numerically if there is a unique solution
+out := exactSOS(pp, facial = "no", traceEquations = "no", objFunction = "random"):
+eig(out[3]);
 

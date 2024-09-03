@@ -29,7 +29,7 @@ q := linalg:-det(a[2..dg,2..dg]):
 k:= 0:
 #parametrize the linear forms of the first row by unknowns b1 to b9
 for i from 1 to dg do
-  a[1,i]:=b||(k+1)*x+b||(k+2)*y+b||(k+3)*z:
+  a[1,i]:=cat(b,(k+1))*x+cat(b,(k+2))*y+cat(b,(k+3))*z:
   k:=k+3:
 od:
   
@@ -56,14 +56,39 @@ od:
 b7 := randi(3): b8:= randi(3): b9:=randi(3): 
 
 #increase the accuracy to convert to rational, if necessary 
-fsolve(eqns):
-convert(%,rational, 6):
-a := subs(%,a):
-p := seq(factor(p[i]*q), i=1..dg):
+fsol := fsolve(eqns):
+sol := convert(fsol,rational, 4):
+pNew := seq(factor(subs(sol2,p[i])*q), i=1..dg):
+
+# This is faster than using Groebner bases (Maple 15)
+evalf(allvalues(solve({pNew})));
 
 #check if it has max (5) real zeros
-gb := Groebner:-Basis([p,z-1],plex(x,y,z)):
-#map(f->[degree(f,x),degree(f,y),degree(f,z)], gb);
-fsolve(gb[2]); 
-printf("%a\n",[p]);
+#gb := Groebner:-Basis([pNew,z-1],plex(x,y,z)):
+#fsolve(gb[2]); 
+#printf("%a\n",[p]);
 
+# The resulting polynomial
+pp := pNew[1]^2+pNew[2]^2+pNew[3]^2;
+pp := simplify(pp);
+
+
+# Verification with rationalSOS and SEDUMI
+
+# Uncomment and set the path to rationalSOS.mpl file
+#currentdir("C:/Users/Usuario/rationalSOS");
+
+#######################################################################
+# Load "Rational SOS" procedures
+#######################################################################
+read("rationalSOS.mpl");
+with(rationalSOS);
+
+# Display tables of any size
+interface(rtablesize=infinity);
+
+out := exactSOS(pp, realPolynomials = [pNew], facial = "yes", traceEquations = "no", objFunction = "eig", forceRational = "yes"):
+eig(out[3]);
+
+# The input for SEDUMI has rank 5 and 2 indeterminates.
+# Sedumi finds a positive definite solution, indicating that a rational decomposition exists.

@@ -1,0 +1,63 @@
+\section{conjecture}
+
+Let $K:= \Q(\alpha)$ for some algebraic number $\alpha$ of degree $d=[K:\Q]>1$. 
+Consider an element $P\in\P^n(K)$, then we say that $P$ is $\Q$-rational if there is a representative
+$P=(p_0:p_1:\dots:p_n)$ with $p_i \in \Q$. We say that $P$ is a {\it general point over $K$} if for a 
+representative $(p_0:p_1:\dots :p_n)$ of $P$, the coordinates $p_i$ generate a $\min(d,n)$-dimensional $\Q$ vector 
+subspace of $K$ (thus all representatives of $P$ generate such a subspace). Similarly we define a {\it general 
+hyperplane over $K$} by identifying points in $(\P^n)^*$ with points in $\P^n$. Thus, if $\beta$ is an algebraic 
+number of degree $d>n$. Then immediately from the definition, a general hyperplane in $\P(\Q(\beta))^n$ will have no 
+$\Q$-rational point. More generally we have the following Lemma
+
+\begin{lemma}\label{l-qrational}
+If $\beta$ is an algebraic number of degree $d$, then a general linear space of 
+dimension less than $d-1$ in a projective space $\P^n(\Q(\beta))$ with $n\ge d-1$ has no $\Q$-rational point.
+\end{lemma}
+
+Now consider our construction of $d$-adic ternary forms. By a {\it general construction with maximum number of real 
+points} we mean one such that 
+\begin{itemize}
+\item $Z(p_1,\dots, p_d)$ has maximum number of real points i.e. $M:=\binom{d+1}2-1$ different real points which we 
+denote $P_1,\dots, P_M$.
+\item The points $P_i$ are general over $K:=\Q(\beta)$ where $\beta$ is a real algebraic number of degree $M$.
+\item The points $P_i$ are in sufficiently general position in $\P^2(K)$ (this will be made precise).
+\end{itemize}
+
+We want to prove the following claims 
+\begin{itemize}
+\item For any $d\ge 3$ such a construction is possible 
+\item For such a construction, the sum of squares of these $d$-adic ternary forms is not $\Q$-sos.
+\end{itemize}
+
+\begin{none}
+We start with the moduli space of planar curves of degree $d$, this is the projective space of dimension 
+$$N := \binom{d+2}2 -1 $$
+%see Beltrammeti \S p172, p'188, Remark 6.3.2
+This is also a regular linear system, so that we can choose real points $P_1,\dots, P_M$ defined over $\Q$ (i.e.\ the 
+set of these points is the zero set of a system of polynomial equations over $\Q$) general enough such that: 
+$P_i$ is a $\Q(\beta)$-rational for some real algebraic number $\beta$ of degree $M$ and general over $\Q(\beta)$;
+each $P_i$ imposes an independent linear condition to the linear system (the third condition above). So that with the 
+base points $P_1,\dots, P_M$, we have a 
+new linear system of dimension $N-M=d+1$. By Lemma \ref{l-qrational}, there are 
+no non-trivial form over $\Q$ of degree $d$ that has all these $P_i$ as zero.
+\end{none}
+
+%jcapco now
+From the above argument, we see that we can relax the condition for $M$. We need not require $M$ to be the 
+maximum number of real points. It suffices to satisfy the two last 
+conditions and instead of $M=\binom{d+1}2-1$ for the first condition, we simply require that $M > N-M$ i.e. 
+% M>N-M \ge d+1
+\begin{prop}
+A general construction of $2d$-adic ternary form over $\Q$ ($d\in 2\N+1$) such that 
+\begin{itemize}
+\item $Z(p_1,\dots, p_d)$ has at least $M$ real points with 
+$$ M > \frac{d(d+3)}4$$
+\item The points $P_i$ are general over $K:=\Q(\beta)$ where $\beta$ is a real algebraic number of degree $M$.
+\item The points $P_i$ are in sufficiently general position in $\P^2(K)$.
+\end{itemize}
+is not $\Q$-sos.
+\end{prop}
+
+\noindent
+Thus, we see that for $d=3$ we need $M$ to be the maximum number of real points ($5$ points) and for $d=5$ it 
+suffices to have $14\ge M \ge 11$ real points. %($M=14$ is the maxumum number of real points for $d=5$).

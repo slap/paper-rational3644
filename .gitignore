@@ -8,8 +8,8 @@
 main.pdf
 pdf/
 /compile.bat
-examples/example14Solutions/example14Solutions_MAS.bak
-codes/maple_codes/max_real_3_6_MAS.bak
+*_MAS.bak
+*_MAS.bak
 *.bak
 *.pyc
 __pycache__

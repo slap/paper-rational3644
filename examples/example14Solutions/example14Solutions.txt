@@ -1,5 +1,6 @@
-currentdir("C:/Users/Usuario/Documents/GitHub/sums-of-squares/rationalSOS"); 
-read "rationalSOS.mpl"; 
+#currentdir("C:/Users/Usuario/Documents/GitHub/sums-of-squares/rationalSOS"); 
+#read "rationalSOS.mpl"; 
+read "../../codes/maple_codes/rationalSOS.mpl";
 with(rationalSOS); 
 with(LinearAlgebra); 
 
@@ -15,11 +16,11 @@ p5 := 786499054380*t^4*x^5-15640914476418*t^4*x^4*y+93094969363148*t^4*x^4*z-106
 f := simplify(expand(p1^2+p2^2+p3^2+p4^2+p5^2));
 fRed := f/10^31;
 
-// Not conclusive...
+# Not conclusive...
 out := exactSOS(fRed, facial = "no", objFunction = "eig");
 
-// We try to use forceRational = "yes"
-// It is slow, we need to check what is slow
+# We try to use forceRational = "yes"
+# It is slow, we need to check what is slow
 
 
 # We look for a rational decomposition.
